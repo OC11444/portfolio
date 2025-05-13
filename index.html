@@ -7,8 +7,12 @@
   <meta name="description" content="Portfolio of James Gitau — Programmer skilled in Python, SQL, C, HTML, and CSS. Explore my projects, contact me, and more.">
   <meta name="keywords" content="James Gitau, programmer, Python, HTML, CSS, SQL, C, GitHub, portfolio, software developer">
   <meta name="author" content="James Gitau">
-  
-  <!-- ✅ Styled favicon with correct type -->
+
+  <!-- Preload images to speed up load -->
+  <link rel="preload" as="image" href="images/laptop-screen-with-technical-information.jpg" />
+  <link rel="preload" as="image" href="images/cybersecurity.png" />
+  <link rel="preload" as="image" href="images/eye-futuristic-robot.jpeg" />
+
   <link rel="icon" type="image/png" href="images/flavicon.png" />
 
   <style>
@@ -21,29 +25,17 @@
     body, html {
       height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      animation: fadeIn 1.2s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     .canvas {
-      background-image:url('images/laptop-screen-with-technical-information.jpg');
+      background-image: url('images/laptop-screen-with-technical-information.jpg');
       background-size: cover;
       background-position: center;
       height: 100vh;
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content:center;
+      justify-content: center;
     }
 
     .overlay {
@@ -68,7 +60,6 @@
 
     .image-block img {
       width: 100%;
-      max-width: 100%;
       height: auto;
       border-radius: 15px;
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
@@ -195,7 +186,7 @@
     <div class="overlay">
 
       <div class="image-block left">
-        <img src="images/cybersecurity.png" />
+        <img src="images/cybersecurity.png" alt="Cybersecurity" width="300" height="200" />
       </div>
 
       <div class="content">
@@ -226,29 +217,31 @@
       </div>
 
       <div class="image-block right">
-        <img src="images/eye-futuristic-robot.jpeg" alt="Right Image" />
+        <img src="images/eye-futuristic-robot.jpeg" alt="AI Robotics" width="300" height="200" />
       </div>
 
     </div>
   </div>
 
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    emailjs.init("mLx0tBjh8qkvVRn-U");
+    document.addEventListener("DOMContentLoaded", function () {
+      emailjs.init("mLx0tBjh8qkvVRn-U");
 
-    document.getElementById("contactForm").addEventListener("submit", function (e) {
-      e.preventDefault();
+      document.getElementById("contactForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      emailjs.sendForm("service_qqoj5ik", "template_g0htamv", this)
-        .then(function () {
-          document.getElementById("statusMsg").innerText = "✅ Message sent!";
-          document.getElementById("statusMsg").style.color = "lightgreen";
-        }, function (error) {
-          document.getElementById("statusMsg").innerText = "❌ Failed to send. Try again.";
-          document.getElementById("statusMsg").style.color = "red";
-        });
+        emailjs.sendForm("service_qqoj5ik", "template_g0htamv", this)
+          .then(function () {
+            document.getElementById("statusMsg").innerText = "✅ Message sent!";
+            document.getElementById("statusMsg").style.color = "lightgreen";
+          }, function (error) {
+            document.getElementById("statusMsg").innerText = "❌ Failed to send. Try again.";
+            document.getElementById("statusMsg").style.color = "red";
+          });
 
-      this.reset();
+        this.reset();
+      });
     });
   </script>
 </body>
